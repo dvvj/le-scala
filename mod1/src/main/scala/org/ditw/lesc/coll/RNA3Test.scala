@@ -26,6 +26,15 @@ class RNA3Test extends FlatSpec with Matchers with TableDrivenPropertyChecks {
       val t3 = rna3 ++ Seq(T, T)
       t3 shouldBe plusplusTT
 
+      val t4 = t3.map {
+        case A => T
+        case x => x
+      }
+
+      t4.isInstanceOf[RNA3] shouldBe true
+
+      val t5 = t3.map(Base.toInt)
+      println(t5)
     }
   }
 
