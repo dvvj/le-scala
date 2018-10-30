@@ -12,22 +12,26 @@ lazy val global = project
 
 lazy val common = project
   .settings(
-    libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.0.4"
-    )
+    libraryDependencies ++= commonDeps
   )
 lazy val mod1 = project.dependsOn(common)
   .settings(
-    libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.0.4"
-    )
+    libraryDependencies ++= commonDeps
   )
 
-name := "multi-module template"
+name := "learning scala"
 
 lazy val dependencies = new {
   val scalaTestVer = "3.0.4"
   val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVer
+  val xtract = "com.lucidchart" %% "xtract" % "2.0.1"
+  val xml = "org.scala-lang.modules" %% "scala-xml" % "1.1.1"
 }
+
+lazy val commonDeps = Seq(
+  dependencies.scalaTest,
+  dependencies.xtract,
+  dependencies.xml
+)
 
 
