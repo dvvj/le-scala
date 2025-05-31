@@ -27,4 +27,11 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'sbt'
-    - run: echo ${{ vars.PROD_VERSION }}
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+      url: https://github.com/${{ github.repository }}/releases/tag/v{{ vars.PROD_VERSION }}
+    steps:
+    - name: show message
+      run: echo ${{ vars.PROD_VERSION }}
