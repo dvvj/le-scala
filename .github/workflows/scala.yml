@@ -27,3 +27,4 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: 'sbt'
+    - run: echo ${{ vars.PROD_VERSION }}
